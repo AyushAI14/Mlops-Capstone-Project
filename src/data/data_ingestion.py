@@ -6,6 +6,11 @@ from src.logging import logger
 from sklearn.model_selection import train_test_split
 from src.configuration.configManager import ConfigurationManager
 pd.set_option('future.no_silent_downcasting', True)
+from src.Connections import s3_connection
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # This must come BEFORE os.getenv()
 
 
 class DataIngestion:
@@ -43,7 +48,19 @@ class DataIngestion:
         try:
             param = read_yaml('param.yaml')
             test_size = param["test_size"]
-            df = self.load_csv_file(self.config.data_source)
+            logger.info("Extracting df from s3")            
+            s3 = s3_connection.s3_operations(
+                    bucket_name="mlopscapstoneprojects3",
+                    aws_access_key=os.getenv("AWS_ACCESS_KEY"),
+                    aws_secret_key=os.getenv("AWS_SECRET_KEY")
+                )
+            # s3 = s3_connection.s3_operations("mlopscapstoneprojects3", "acesskey", "secretkey")
+
+
+            df = s3.fetch_file_from_s3("IMDB.csv")
+            logger.info('Extraction completed from s3')
+
+            # df = self.load_csv_file(self.config.data_source)
             final_df = self.preprocess_data(df=df)
 
             X = final_df['review']
