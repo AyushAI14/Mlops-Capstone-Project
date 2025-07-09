@@ -8,7 +8,6 @@ from src.configuration.configManager import ConfigurationManager
 pd.set_option('future.no_silent_downcasting', True)
 from src.Connections import s3_connection
 from dotenv import load_dotenv
-import os
 
 load_dotenv()  # This must come BEFORE os.getenv()
 
