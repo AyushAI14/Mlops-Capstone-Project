@@ -8,5 +8,7 @@ data_ingestion:
 
 data_transformation:
   root_dir : data/processed
-  Train_data_path: data/processed/train.csv
-  test_data :  data/processed/test.csv
+  Train_data_path: data/raw/train.csv
+  test_data :  data/raw/test.csv
+  clean_Train_data_path: data/processed/train.csv
+  clean_test_data :  data/processed/test.csv

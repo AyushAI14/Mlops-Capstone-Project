@@ -66,9 +66,14 @@ class DataIngestion:
             y = final_df['sentiment']
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=44)
 
-            X_train.to_csv(self.config.Train_data_path)
-            X_test.to_csv(self.config.test_data)
+            train_df = pd.DataFrame({'review': X_train, 'sentiment': y_train})
+            test_df = pd.DataFrame({'review': X_test, 'sentiment': y_test})
+
+            train_df.to_csv(self.config.Train_data_path, index=False)
+            test_df.to_csv(self.config.test_data, index=False)
+
         except Exception as e:
+            print(e)
             logger.info(f"Main Have a issue {e}")
 
 
