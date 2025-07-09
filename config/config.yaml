@@ -7,8 +7,16 @@ data_ingestion:
   data_source: 'https://raw.githubusercontent.com/AyushAI14/Test-dataset/refs/heads/main/IMDB.csv'
 
 data_transformation:
-  root_dir : data/processed
+  root_dir : data/interim
   Train_data_path: data/raw/train.csv
   test_data :  data/raw/test.csv
-  clean_Train_data_path: data/processed/train.csv
-  clean_test_data :  data/processed/test.csv
+  clean_Train_data_path: data/interim/train.csv
+  clean_test_data :  data/interim/test.csv
+
+feature_Engineering:
+  root_dir : data/processed
+  process_Train_data_path: data/processed/train.csv
+  process_test_data :  data/processed/test.csv
+  clean_Train_data_path: data/interim/train.csv
+  clean_test_data :  data/interim/test.csv
+

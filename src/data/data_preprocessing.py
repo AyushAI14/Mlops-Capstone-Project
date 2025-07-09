@@ -38,6 +38,7 @@ class DataPreprocessing:
 
             train_df.to_csv(self.config.clean_Train_data_path)
             test_df.to_csv(self.config.clean_test_data)
+            logger.info("Tranformation of Data Completed Sucessfully")
         except Exception as e:
             logger.info(f'Error while transformaing the df {e}')
 

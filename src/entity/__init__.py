@@ -15,3 +15,11 @@ class DataProcessingConfig:
     test_data: str
     clean_Train_data_path: str
     clean_test_data: str
+
+@dataclass
+class FeatureEngineeringConfig:
+    root_dir: str
+    process_Train_data_path: str
+    process_test_data: str
+    clean_Train_data_path: str
+    clean_test_data: str
