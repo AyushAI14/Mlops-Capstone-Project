@@ -2,11 +2,13 @@ import os
 from pathlib import Path
 import logging
 import sys
+from datetime import datetime
 
-log_file = 'logs'
+logdir = 'logs'
+log_file = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
 log_str = "[%(asctime)s : %(levelname)s : %(module)s : %(message)s]"
-os.makedirs(log_file,exist_ok=True)
-log_file_path = os.path.join(log_file,'loop.log')
+os.makedirs(logdir,exist_ok=True)
+log_file_path = os.path.join(logdir,log_file)
 
 try:
     logging.basicConfig(

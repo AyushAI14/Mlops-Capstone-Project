@@ -1,0 +1,12 @@
+artifact_root: data
+
+data_ingestion:
+  root_dir : data/raw
+  Train_data_path: data/raw/train.csv
+  test_data :  data/raw/test.csv
+  data_source: 'https://raw.githubusercontent.com/AyushAI14/Test-dataset/refs/heads/main/IMDB.csv'
+
+data_transformation:
+  root_dir : data/processed
+  Train_data_path: data/processed/train.csv
+  test_data :  data/processed/test.csv
