@@ -1,6 +1,6 @@
 from src.utils import *
 from src.constants.common import read_yaml
-from src.entity import DataIngestionConfig,DataProcessingConfig,FeatureEngineeringConfig
+from src.entity import DataIngestionConfig,DataProcessingConfig,FeatureEngineeringConfig,ModelBuildingConfig
 
 class ConfigurationManager:
     def __init__(self,config=CONFIG_FILE_PATH,
@@ -35,4 +35,13 @@ class ConfigurationManager:
             process_test_data=config["process_test_data"],
             clean_Train_data_path=config["clean_Train_data_path"],
             clean_test_data=config["clean_test_data"],
+        )
+    def get_model_building(self) -> ModelBuildingConfig:
+        config = self.config["model_building"]
+        return ModelBuildingConfig(
+            # root_dir=config["root_dir"],
+            process_Train_data_path=config["process_Train_data_path"],
+            process_test_data=config["process_test_data"],
+            # clean_Train_data_path=config["clean_Train_data_path"],
+            # clean_test_data=config["clean_test_data"],
         )
