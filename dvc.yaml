@@ -1,0 +1,58 @@
+stages:
+  data_ingestion:
+    cmd: python3 src/data/data_ingestion.py
+    deps:
+      - src/data/data_ingestion.py
+      - config/config.yaml
+    outs:
+      - data/raw/train.csv
+      - data/raw/test.csv
+    params:
+      - test_size
+
+  data_preprocessing:
+    cmd: python3 src/data/data_preprocessing.py
+    deps:
+      - src/data/data_preprocessing.py
+      - data/raw/train.csv
+      - data/raw/test.csv
+      - config/config.yaml
+    outs:
+      - data/interim/train.csv
+      - data/interim/test.csv
+
+  feature_engineering:
+    cmd: python3 src/features/featureEngineering.py
+    deps:
+      - src/features/featureEngineering.py
+      - data/interim/train.csv
+      - data/interim/test.csv
+      - config/config.yaml
+    outs:
+      - data/processed/train.csv
+      - data/processed/test.csv
+      - models/vectorizer.pkl
+    params:
+      - max_features
+
+  model_building:
+    cmd: python3 src/model/model_building.py
+    deps:
+      - src/model/model_building.py
+      - data/processed/train.csv
+      - data/processed/test.csv
+      - config/config.yaml
+    outs:
+      - models/clfLR.pkl
+    
+
+  model_evaluation:
+    cmd: python3 src/model/model_evalution.py
+    deps:
+      - src/model/model_evalution.py
+      - models/clfLR.pkl
+      - data/processed/test.csv
+      - config/config.yaml
+    outs:
+      - reports/metrics.json
+      - reports/experiment_info.json

@@ -34,7 +34,6 @@ class ModelEvalution:
         """Load data from a CSV file."""
         try:
             df = pd.read_csv(file_path)
-            print(df.head())
             logger.info('Data loaded from %s', file_path)
             return df
         except pd.errors.ParserError as e:
@@ -89,19 +88,16 @@ class ModelEvalution:
             logger.error('Error occurred while saving the metrics: %s', e)
             raise
 
-    def save_model_info(self, run_id: str, artifact_path: str, output_path: str) -> None:
-        """Save MLflow run and model info to a JSON file."""
+    
+    def save_model_info(self,run_id: str, model_path: str, file_path: str) -> None:
+        """Save the model run ID and path to a JSON file."""
         try:
-            os.makedirs(os.path.dirname(output_path), exist_ok=True)
-            info = {
-                "run_id": run_id,
-                "artifact_path": artifact_path
-            }
-            with open(output_path, 'w') as f:
-                json.dump(info, f, indent=4)
-            logger.info('Model info saved to %s', output_path)
+            model_info = {'run_id': run_id, 'model_path': model_path}
+            with open(file_path, 'w') as file:
+                json.dump(model_info, file, indent=4)
+            logger.debug('Model info saved to %s', file_path)
         except Exception as e:
-            logger.error('Failed to save model info: %s', e)
+            logger.error('Error occurred while saving the model info: %s', e)
             raise
 
     def main(self):

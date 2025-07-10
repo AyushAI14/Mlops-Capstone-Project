@@ -12,7 +12,7 @@ class FeatureEngineering:
         self.config=config
 
     def vectorizor(self):
-        params = read_yaml('param.yaml')
+        params = read_yaml('params.yaml')
         max_features = params['max_features']
         vectorizer = CountVectorizer(max_features=max_features)
         logger.info("load into Dataframe")

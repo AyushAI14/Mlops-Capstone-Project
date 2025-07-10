@@ -45,7 +45,7 @@ class DataIngestion:
     
     def main(self):
         try:
-            param = read_yaml('param.yaml')
+            param = read_yaml('params.yaml')
             test_size = param["test_size"]
             logger.info("Extracting df from s3")            
             s3 = s3_connection.s3_operations(

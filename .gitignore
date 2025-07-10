@@ -209,6 +209,7 @@ __marimo__/
 flow.txt 
 
 cred.txt
-logs
-models
-data
+logs/
+models/
+data/
+reports/

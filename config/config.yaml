@@ -28,3 +28,5 @@ model_evalution:
   process_test_data: data/processed/test.csv
   model_path: models/clfLR.pkl
 
+model_registry:
+  json_file: reports/experiment_info.json

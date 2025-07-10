@@ -35,3 +35,7 @@ class ModelBuildingConfig:
 class ModelEvalutionConfig:
     process_test_data: str
     model_path:str
+
+@dataclass
+class ModelRegistryConfig:
+    json_file: str
