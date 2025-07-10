@@ -1,0 +1,6 @@
+artifact_location: file:///home/ayush/Documents/AI/Projects/Mlops-Capstone-Project/mlruns/652577538564058758
+creation_time: 1752082119706
+experiment_id: '652577538564058758'
+last_update_time: 1752082119706
+lifecycle_stage: active
+name: my-dvc-pipeline

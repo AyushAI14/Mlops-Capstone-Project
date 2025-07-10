@@ -35,8 +35,8 @@ class FeatureEngineering:
         logger.info("saving the vectorizer")
         joblib.dump(vectorizer,'models/vectorizer.pkl')
         logger.info("Saving the data ")
-        traindf.to_csv(self.config.process_Train_data_path)
-        testdf.to_csv(self.config.process_test_data)
+        traindf.to_csv(self.config.process_Train_data_path,index=False)
+        testdf.to_csv(self.config.process_test_data,index=False)
         logger.info("Feature Engineering Completed Sucessfully")
 
 if __name__ == "__main__":

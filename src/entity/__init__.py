@@ -31,3 +31,7 @@ class ModelBuildingConfig:
     process_test_data: str
     # clean_Train_data_path: str
     # clean_test_data: str
+@dataclass
+class ModelEvalutionConfig:
+    process_test_data: str
+    model_path:str

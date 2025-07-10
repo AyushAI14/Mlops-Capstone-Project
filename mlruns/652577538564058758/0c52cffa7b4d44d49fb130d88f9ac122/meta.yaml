@@ -1,0 +1,14 @@
+artifact_uri: file:///home/ayush/Documents/AI/Projects/Mlops-Capstone-Project/mlruns/652577538564058758/0c52cffa7b4d44d49fb130d88f9ac122/artifacts
+end_time: 1752082339233
+entry_point_name: ''
+experiment_id: '652577538564058758'
+lifecycle_stage: active
+run_id: 0c52cffa7b4d44d49fb130d88f9ac122
+run_name: vaunted-moose-567
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1752082339220
+status: 3
+tags: []
+user_id: ayush

@@ -24,3 +24,7 @@ model_building:
   process_Train_data_path: data/processed/train.csv
   process_test_data :  data/processed/test.csv
 
+model_evalution:
+  process_test_data: data/processed/test.csv
+  model_path: models/clfLR.pkl
+

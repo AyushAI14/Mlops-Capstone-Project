@@ -1,0 +1,14 @@
+artifact_uri: file:///home/ayush/Documents/AI/Projects/Mlops-Capstone-Project/mlruns/652577538564058758/72a30a4155c74bb4958439ab9e175b15/artifacts
+end_time: 1752082119864
+entry_point_name: ''
+experiment_id: '652577538564058758'
+lifecycle_stage: active
+run_id: 72a30a4155c74bb4958439ab9e175b15
+run_name: ambitious-moth-905
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1752082119844
+status: 3
+tags: []
+user_id: ayush
