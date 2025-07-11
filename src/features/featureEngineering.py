@@ -33,6 +33,7 @@ class FeatureEngineering:
         testdf = pd.DataFrame(X_test_bow.toarray())
         testdf['label']=test_set
         logger.info("saving the vectorizer")
+        os.makedirs(os.path.dirname('models/vectorizer.pkl'),exist_ok=True)
         joblib.dump(vectorizer,'models/vectorizer.pkl')
         logger.info("Saving the data ")
         traindf.to_csv(self.config.process_Train_data_path,index=False)
