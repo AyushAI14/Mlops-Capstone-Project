@@ -36,6 +36,9 @@ class FeatureEngineering:
         os.makedirs(os.path.dirname('models/vectorizer.pkl'),exist_ok=True)
         joblib.dump(vectorizer,'models/vectorizer.pkl')
         logger.info("Saving the data ")
+        os.makedirs(os.path.dirname(self.config.process_Train_data_path),exist_ok=True)
+        os.makedirs(os.path.dirname(self.config.process_test_data),exist_ok=True)
+
         traindf.to_csv(self.config.process_Train_data_path,index=False)
         testdf.to_csv(self.config.process_test_data,index=False)
         logger.info("Feature Engineering Completed Sucessfully")
