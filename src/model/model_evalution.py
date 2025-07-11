@@ -14,24 +14,26 @@ from src.logging import logger
 from src.constants.common import read_yaml
 from src.configuration.configManager import ConfigurationManager
 from dotenv import load_dotenv
+import dagshub
+import os
 
-load_dotenv() 
+load_dotenv()
 
-
-# Set up DagsHub credentials for MLflow tracking
 dagshub_token = os.getenv("CAPSTONE_TEST")
 if not dagshub_token:
     raise EnvironmentError("CAPSTONE_TEST environment variable is not set")
 
+# Set credentials
 os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
 os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
 
-dagshub_url = "https://dagshub.com"
-repo_owner = "AyushAI14"
-repo_name = " Mlops-Capstone-Project"
+# Init DagsHub MLflow integration
+dagshub.init(
+    repo_owner='AyushAI14',
+    repo_name='Mlops-Capstone-Project',
+    mlflow=True
+)
 
-# Set up MLflow tracking URI
-mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
 # mlflow.set_tracking_uri('https://dagshub.com/AyushAI14/Mlops-Capstone-Project.mlflow')
 # dagshub.init(repo_owner='AyushAI14', repo_name='Mlops-Capstone-Project', mlflow=True)
 
@@ -118,8 +120,10 @@ class ModelEvalution:
             raise
 
     def main(self):
-        mlflow.set_experiment("my-dvc-pipeline")
-        with mlflow.start_run() as run:  # Start an MLflow run
+        # mlflow.set_experiment("my-dvc-pipeline")
+        EXPERIMENT_ID = "3"  # Replace with actual ID you got from DagsHub
+
+        with mlflow.start_run(experiment_id=EXPERIMENT_ID) as run:
             try:
                 clf = self.load_model(self.config.model_path)
                 test_data = self.load_data(self.config.process_test_data)
