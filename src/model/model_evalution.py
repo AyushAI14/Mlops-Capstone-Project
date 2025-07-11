@@ -17,22 +17,25 @@ from dotenv import load_dotenv
 import dagshub
 import os
 
-load_dotenv()
-print("Token from env:", os.getenv("CAPSTONE_TEST"))
+# Validate required secret
 dagshub_token = os.getenv("CAPSTONE_TEST")
 if not dagshub_token:
     raise EnvironmentError("CAPSTONE_TEST environment variable is not set")
 
-# Set credentials
-os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
+# Set up MLflow tracking URI (DagsHub)
+mlflow.set_tracking_uri("https://dagshub.com/AyushAI14/Mlops-Capstone-Project.mlflow")
+
+# Set MLflow credentials
+os.environ["MLFLOW_TRACKING_USERNAME"] = "AyushAI14"
 os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
 
-# Init DagsHub MLflow integration
+# Optional: DagsHub MLflow init
 dagshub.init(
-    repo_owner='AyushAI14',
-    repo_name='Mlops-Capstone-Project',
+    repo_owner="AyushAI14",
+    repo_name="Mlops-Capstone-Project",
     mlflow=True
 )
+
 
 # mlflow.set_tracking_uri('https://dagshub.com/AyushAI14/Mlops-Capstone-Project.mlflow')
 # dagshub.init(repo_owner='AyushAI14', repo_name='Mlops-Capstone-Project', mlflow=True)
