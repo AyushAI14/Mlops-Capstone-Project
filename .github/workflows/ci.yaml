@@ -30,7 +30,7 @@ jobs:
 
       - name: run pipeline
         env:
-          # CAPSTONE_TEST: ${{ secrets.CAPSTONE_TEST }}
+          CAPSTONE_TEST: ${{ secrets.CAPSTONE_TEST }}
           AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
         run: |
