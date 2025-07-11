@@ -18,7 +18,7 @@ import dagshub
 import os
 
 load_dotenv()
-
+print("Token from env:", os.getenv("CAPSTONE_TEST"))
 dagshub_token = os.getenv("CAPSTONE_TEST")
 if not dagshub_token:
     raise EnvironmentError("CAPSTONE_TEST environment variable is not set")
