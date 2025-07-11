@@ -69,6 +69,9 @@ class DataIngestion:
             train_df = pd.DataFrame({'review': X_train, 'sentiment': y_train})
             test_df = pd.DataFrame({'review': X_test, 'sentiment': y_test})
 
+            os.makedirs(os.path.dirname(self.config.Train_data_path), exist_ok=True)
+            os.makedirs(os.path.dirname(self.config.test_data), exist_ok=True)
+            
             train_df.to_csv(self.config.Train_data_path, index=False)
             test_df.to_csv(self.config.test_data, index=False)
 

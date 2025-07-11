@@ -110,7 +110,7 @@ class ModelEvalution:
                 y_test = test_data.iloc[:, -1].values
 
                 metrics = self.evaluate_model(clf, X_test, y_test)
-
+                os.makedirs(os.path.dirname('reports/metrics.json'), exist_ok=True)
                 self.save_metrics(metrics, 'reports/metrics.json')
 
                 # Log metrics to MLflow
@@ -128,6 +128,7 @@ class ModelEvalution:
                 mlflow.log_artifact(self.config.model_path)
 
                 # Save model info
+                os.makedirs(os.path.dirname('reports/experiment_info.json'), exist_ok=True)
                 self.save_model_info(run.info.run_id, "model", 'reports/experiment_info.json')
 
                 # Log the metrics file to MLflow

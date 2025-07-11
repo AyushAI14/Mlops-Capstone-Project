@@ -36,6 +36,8 @@ class DataPreprocessing:
             train_df['review'] = train_df['review'].apply(self.clean_text)
             test_df['review'] = test_df['review'].apply(self.clean_text)
 
+            os.makedirs(os.path.dirname(self.config.clean_Train_data_path), exist_ok=True)
+            os.makedirs(os.path.dirname(self.config.clean_test_data), exist_ok=True)
             train_df.to_csv(self.config.clean_Train_data_path)
             test_df.to_csv(self.config.clean_test_data)
             logger.info("Tranformation of Data Completed Sucessfully")

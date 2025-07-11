@@ -22,6 +22,7 @@ class ModelBuilding:
         clf = LogisticRegression(C=1, solver='liblinear', penalty='l1')
         clf.fit(X_train, y_train)
         logger.info('Model training completed')
+        os.makedirs(os.path.dirname('models/clfLR.pkl'), exist_ok=True)
         joblib.dump(clf,'models/clfLR.pkl')
         logger.info('Model Saved')
 
