@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Toxic Comment Classifier</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #c2e9fb, #a1c4fd);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 80px auto;
+      padding: 40px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    p.description {
+      text-align: center;
+      color: #555;
+      font-size: 15px;
+      margin-top: 0;
+    }
+
+    form {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    textarea {
+      resize: vertical;
+      padding: 15px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      min-height: 120px;
+      transition: border 0.3s ease;
+    }
+
+    textarea:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 14px;
+      font-size: 17px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      transform: scale(1.03);
+    }
+    .result.positive {
+  background: #e6ffed;
+  border-left: 6px solid #28a745;
+  color: #155724;
+}
+
+.result.negative {
+  background: #f8d7da;
+  border-left: 6px solid #dc3545;
+  color: #721c24;
+}
+
+
+    .result {
+      margin-top: 30px;
+      padding: 15px;
+      background: #f1f3f5;
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 18px;
+      text-align: center;
+      color: #222;
+      border-left: 5px solid #007bff;
+    }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        margin: 40px 20px;
+        padding: 30px 20px;
+      }
+
+      button {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Movie Comment Classifier</h2>
+    <p class="description">Enter a comment and let the model decide if it's toxic or not.</p>
+
+    <form method="post" action="/predict">
+      <textarea name="text" placeholder="Type your comment here..." required></textarea>
+      <button type="submit">🔍 Predict</button>
+    </form>
+
+    {% if result is defined %}
+  <div class="result {% if raw_pred|int == 1 %}positive{% else %}negative{% endif %}">
+    Prediction: {{ result }}
+  </div>
+{% endif %}
+
+
+  </div>
+</body>
+</html>
