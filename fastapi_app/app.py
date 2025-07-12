@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Form, Request
 from fastapi.templating import Jinja2Templates
+from dotenv import load_dotenv
 
 import mlflow
 import joblib
@@ -7,7 +8,6 @@ import pandas as pd
 from prometheus_client import Counter, Histogram, generate_latest, CollectorRegistry, CONTENT_TYPE_LATEST
 import time
 import dagshub
-from src.logging import logger
 from text_prettifier import TextPrettifier
 import uvicorn
 import os
@@ -30,10 +30,26 @@ def clean_text(text):
         text = prettifier.remove_numbers(text)
         return text
     except Exception as e:
-        logger.info(f"Error cleaning text: {e}")
+        print(f"Error cleaning text: {e}")
 
-mlflow.set_tracking_uri('https://dagshub.com/AyushAI14/Mlops-Capstone-Project.mlflow')
-dagshub.init(repo_owner='AyushAI14', repo_name='Mlops-Capstone-Project', mlflow=True)
+# mlflow.set_tracking_uri('https://dagshub.com/AyushAI14/Mlops-Capstone-Project.mlflow')
+# dagshub.init(repo_owner='AyushAI14', repo_name='Mlops-Capstone-Project', mlflow=True)
+
+
+load_dotenv() 
+
+
+# Set up DagsHub credentials for MLflow tracking
+dagshub_token = os.getenv("CAPSTONE_TEST")
+if not dagshub_token:
+    raise EnvironmentError("CAPSTONE_TEST environment variable is not set")
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
+os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
+
+dagshub_url = "https://dagshub.com"
+repo_owner = "AyushAI14"
+repo_name = "Mlops-Capstone-Project"
 
 app = FastAPI()
 
