@@ -1,7 +1,6 @@
 
 ---
 
-````markdown
 # 🧠 Capstone ML Project - MLOps Pipeline
 
 This project demonstrates a complete Machine Learning lifecycle built with an MLOps-first mindset. From structured project scaffolding to version-controlled pipelines, experiment tracking, containerization, and CI/CD — this repo showcases how real-world ML projects are built and deployed.
@@ -22,8 +21,6 @@ This project demonstrates a complete Machine Learning lifecycle built with an ML
 1. **Clone the Repository**  
    ```bash
    git clone <repo_url> && cd <repo>
-````
-
 2. **Create Virtual Environment**
 
    ```bash
